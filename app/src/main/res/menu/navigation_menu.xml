@@ -4,27 +4,32 @@
     <item
         android:id="@+id/navigation_chat_bot_item"
         android:icon="@drawable/ic_map_bottom_nav"
+        android:iconTint="@color/menu_navigation_item_color"
         android:title="Чат-бот"
         />
 
     <item
         android:id="@+id/navigation_note_item"
         android:icon="@drawable/ic_news_item"
+        android:iconTint="@color/menu_navigation_item_color"
         android:title="Новости"
         />
 
     <item
         android:id="@+id/navigation_map_item"
         android:icon="@drawable/ic_map_bottom_nav"
+        android:iconTint="@color/menu_navigation_item_color"
         android:title="Карта" />
 
     <item
         android:id="@+id/navigation_recomend_item"
         android:icon="@drawable/ic_map_bottom_nav"
+        android:iconTint="@color/menu_navigation_item_color"
         android:title="Рекомендации"/>
 
     <item
         android:id="@+id/navigation_profile_item"
         android:icon="@drawable/ic_map_bottom_nav"
+        android:iconTint="@color/menu_navigation_item_color"
         android:title="Профиль"/>
 </menu>
