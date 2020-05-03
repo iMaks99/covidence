@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Covidence</string>
+    <string name="i_have_read_the_user">Я ознакомился с <a href="https://google.com">пользовательским соглашением</a> и <a href="https://mskmobileapp.roedl.ru/static/dataProtectionPolicy.pdf">политикой обработки персональных данных</a> и принимаюих условия.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

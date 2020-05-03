@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.RegistrationFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:stateListAnimator="@animator/appbar_not_elevated"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Toolbar
+            android:id="@+id/registration_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/toolbar_color"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetEnd="0dp"
+            android:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="55dp"
+                android:background="@color/authorization_textedit_background_color"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Логин"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_btn_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/email_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="55dp"
+                android:background="@color/authorization_textedit_background_color"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_input_layout"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_btn_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="55dp"
+                android:background="@color/authorization_textedit_background_color"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_phone_input_layout"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Пароль"
+                    android:inputType="textPassword"
+                    android:textColor="@color/authorization_btn_text_color"
+                    android:textColorHighlight="@color/authorization_btn_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/number_phone_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="55dp"
+                android:background="@color/authorization_textedit_background_color"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/email_input_layout"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/number_phone_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp"
+                    android:hint="Номер телефона"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_btn_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/firstname_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="55dp"
+                android:background="@color/authorization_textedit_background_color"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_input_layout"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/firstname_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp"
+                    android:hint="Имя"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_btn_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/lastname_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="55dp"
+                android:background="@color/authorization_textedit_background_color"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/firstname_input_layout"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/lastname_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp"
+                    android:hint="Фамилия"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_btn_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/patronomic_input_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="55dp"
+                android:background="@color/authorization_textedit_background_color"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lastname_input_layout"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/patronymic_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp"
+                    android:hint="Отчество"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_btn_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/user_agreement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/patronomic_input_layout">
+
+                <CheckBox
+                    android:id="@+id/agreement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/agreement_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="55dp"
+                    android:gravity="center"
+                    android:text="@string/i_have_read_the_user"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/agreement"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/done_sign_up_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="55dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/registration_btn_selector"
+                android:paddingTop="12dp"
+                android:enabled="false"
+                android:paddingBottom="12dp"
+                android:text="Завершить регистрацию"
+                android:textAllCaps="false"
+                android:textColor="@color/authorization_btn_text_color"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_agreement" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

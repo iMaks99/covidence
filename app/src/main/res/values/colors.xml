@@ -9,4 +9,13 @@
     <!--    menu nav-->
     <color name="menu_navigation_item_color">#3700B3</color>
 
+    <color name="toolbar_color">#3700B3</color>
+
+    <!--    authorization-->
+    <color name="authorization_background_color">#ffffff</color>
+    <color name="authorization_textedit_background_color">#9E9494</color>
+    <color name="authorization_textedit_text_color">#3700B3</color>
+    <color name="authorization_btn_text_color">#ffffff</color>
+
+
 </resources>
