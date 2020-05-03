@@ -4,19 +4,25 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.sr.covidence.chat_bot.ChatBotFragment
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        navigation_menu.setOnNavigationItemSelectedListener(mOnNavigationMenuItemSelectedListener)
+
+        showFragment(ChatBotFragment())
     }
 
     private val mOnNavigationMenuItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_chat_bot_item -> {
-                    //showFragment(NewsBrochuresTabbedFragment())
+                    showFragment(ChatBotFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_note_item -> {

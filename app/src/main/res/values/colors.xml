@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="white">#ffffff</color>
+
     <!--    menu nav-->
     <color name="menu_navigation_item_color">#3700B3</color>
+
 </resources>
