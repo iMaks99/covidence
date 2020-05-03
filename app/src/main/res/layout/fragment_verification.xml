@@ -3,15 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/verification_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".login.VerificationFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:stateListAnimator="@animator/appbar_not_elevated"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Toolbar
+            android:id="@+id/verification_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/toolbar_color"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetEnd="0dp"
+            android:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/code_input_layout"
         android:layout_width="200dp"
         android:layout_height="77dp"
-        android:layout_marginStart="60dp"
-        android:background="@color/authorization_textedit_background_color"
+        android:layout_marginStart="55dp"
         android:textColorHint="@color/authorization_textedit_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +50,7 @@
             android:layout_height="60dp"
             android:hint="Код"
             android:inputType="textEmailAddress"
-            android:textColor="@color/authorization_btn_text_color"
+            android:textColor="@color/authorization_text_color"
             android:textColorHighlight="@color/authorization_textedit_text_color"
             android:textColorHint="@color/authorization_textedit_text_color"
             android:textColorLink="@color/authorization_textedit_text_color"
@@ -37,6 +62,7 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
+        android:layout_marginEnd="55dp"
         android:background="@drawable/registration_btn_selector"
         android:enabled="false"
         android:paddingTop="12dp"
@@ -45,9 +71,22 @@
         android:textAllCaps="false"
         android:textColor="@color/authorization_btn_text_color"
         android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/code_input_layout"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:gravity="center"
+        android:text="Вам на почту выслан шестизначный код для подтверждения, введите этот код"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/code_input_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         pref = getSharedPreferences("sharedPreferences", MODE_PRIVATE)
 
         navigation_menu.setOnNavigationItemSelectedListener(mOnNavigationMenuItemSelectedListener)
+        navigation_menu.selectedItemId = R.id.navigation_chat_bot_item
 
         showFragment(ChatBotFragment(), supportFragmentManager)
     }
@@ -29,16 +30,22 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationMenuItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
+
+                R.id.navigation_advice_item -> {
+                    //showFragment(OthersFragment())
+                    return@OnNavigationItemSelectedListener true
+                }
+
+                R.id.navigation_browse_item -> {
+                    //showFragment(ServicesFragment())
+                    return@OnNavigationItemSelectedListener true
+                }
                 R.id.navigation_chat_bot_item -> {
                     showFragment(ChatBotFragment(), supportFragmentManager)
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_note_item -> {
+                R.id.navigation_journal_item -> {
                     //showFragment(CalendarFragment())
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.navigation_map_item -> {
-                    //showFragment(ServicesFragment())
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_profile_item -> {
@@ -50,10 +57,6 @@ class MainActivity : AppCompatActivity() {
                             supportFragmentManager
                         )
                     }
-                    return@OnNavigationItemSelectedListener true
-                }
-                R.id.navigation_recomend_item -> {
-                    //showFragment(OthersFragment())
                     return@OnNavigationItemSelectedListener true
                 }
             }

@@ -2,19 +2,26 @@
 <resources>
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <color name="colorAccent">#9100FD</color>
 
     <color name="white">#ffffff</color>
 
     <!--    menu nav-->
-    <color name="menu_navigation_item_color">#3700B3</color>
+    <color name="menu_navigation_item_color">#9100FD</color>
+    <color name="menu_navigation_disable_item_color">#919894</color>
+    <color name="menu_navigation_background_color">#F8F9FA</color>
 
-    <color name="toolbar_color">#3700B3</color>
+    <!--    toolbar-->
+    <color name="toolbar_color">#ffffff</color>
+    <color name="toolbar_text_color">#000000</color>
+    <color name="toolbar_separator_color">#f0f0f0</color>
+
 
     <!--    authorization-->
     <color name="authorization_background_color">#ffffff</color>
-    <color name="authorization_textedit_background_color">#9E9494</color>
-    <color name="authorization_textedit_text_color">#3700B3</color>
+    <color name="authorization_textedit_background_color">#DBDBDB</color>
+    <color name="authorization_textedit_text_color">#9100FD</color>
+    <color name="authorization_text_color">#000000</color>
     <color name="authorization_btn_text_color">#ffffff</color>
 
 

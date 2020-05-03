@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_advice_item"
+        android:icon="@drawable/ic_advice_nav_menu"
+        android:title="Советы"
+        />
+
+    <item
+        android:id="@+id/navigation_browse_item"
+        android:icon="@drawable/ic_browse_nav_menu"
+        android:title="Обзор" />
+
     <item
         android:id="@+id/navigation_chat_bot_item"
-        android:icon="@drawable/ic_map_bottom_nav"
-        android:iconTint="@color/menu_navigation_item_color"
+        android:icon="@drawable/ic_chat_bot_nav_menu"
         android:title="Чат-бот"
         />
 
     <item
-        android:id="@+id/navigation_note_item"
-        android:icon="@drawable/ic_news_item"
-        android:iconTint="@color/menu_navigation_item_color"
-        android:title="Новости"
-        />
-
-    <item
-        android:id="@+id/navigation_map_item"
-        android:icon="@drawable/ic_map_bottom_nav"
-        android:iconTint="@color/menu_navigation_item_color"
-        android:title="Карта" />
-
-    <item
-        android:id="@+id/navigation_recomend_item"
-        android:icon="@drawable/ic_map_bottom_nav"
-        android:iconTint="@color/menu_navigation_item_color"
-        android:title="Рекомендации"/>
+        android:id="@+id/navigation_journal_item"
+        android:icon="@drawable/ic_journal_nav_menu"
+        android:title="Дневник"/>
 
     <item
         android:id="@+id/navigation_profile_item"
-        android:icon="@drawable/ic_map_bottom_nav"
-        android:iconTint="@color/menu_navigation_item_color"
+        android:icon="@drawable/ic_profile_nav_menu"
         android:title="Профиль"/>
 </menu>
