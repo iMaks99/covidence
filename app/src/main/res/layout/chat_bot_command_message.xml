@@ -6,13 +6,12 @@
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/chatBotDefaultMessageContainer"
+        android:id="@+id/chatBotCommandMessageContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/chat_bot_default_message_shape"
         android:elevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,19 +20,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <TextView
-            android:id="@+id/chatBotDefaultMessageContent"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/chatBotCommandMessageContent"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/registration_btn_selector"
             android:maxWidth="260dp"
-            android:text="TextView"
-            android:textColor="#000000"
+            android:text="Ответить"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

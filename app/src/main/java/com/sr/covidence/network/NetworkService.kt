@@ -16,6 +16,9 @@ class NetworkService {
     val browseEndpoint: BrowseEndpoint?
         get() = mRetrofit?.create(BrowseEndpoint::class.java)
 
+    val botEndpoint: BotEndpoint?
+        get() = mRetrofit?.create(BotEndpoint::class.java)
+
     init {
 
         val loggingInterceptor = HttpLoggingInterceptor()

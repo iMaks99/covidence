@@ -1,7 +1,7 @@
-package com.sr.covidence.models.dto
+package com.sr.covidence.models.model
 
 import com.sr.covidence.models.MessageInterface
 
-data class UserMessageDto(
+data class UserMessage(
     var messageText: String
 ) : MessageInterface

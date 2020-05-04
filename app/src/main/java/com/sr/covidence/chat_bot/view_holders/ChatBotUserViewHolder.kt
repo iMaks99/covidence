@@ -5,12 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sr.covidence.R
-import com.sr.covidence.models.dto.UserMessageDto
+import com.sr.covidence.models.model.UserMessage
 import kotlinx.android.synthetic.main.chat_bot_user_message.view.*
 
 class ChatBotUserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun bind(message: UserMessageDto) {
+    fun bind(message: UserMessage) {
         itemView.chatBotUserMessageContent.text = message.messageText
     }
 

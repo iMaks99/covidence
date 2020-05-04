@@ -22,36 +22,22 @@
 
 
         <TextView
-            android:id="@+id/chatBotUserMessagePubTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="8dp"
-            android:text="20:20"
-            android:textColor="#99FFFFFF"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
             android:id="@+id/chatBotUserMessageContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="8dp"
             android:maxWidth="260dp"
             android:textAlignment="viewEnd"
             android:textColor="#FFFFFF"
             app:layout_constrainedWidth="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/chatBotUserMessagePubTime"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
             app:layout_constraintWidth_default="wrap"
             tools:text="tgtqaergabt4androidx.constraintlayout.widget.ConstraintLayout" />
 
