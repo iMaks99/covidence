@@ -12,6 +12,7 @@ import androidx.core.widget.addTextChangedListener
 import com.google.android.material.snackbar.Snackbar
 
 import com.sr.covidence.R
+import com.sr.covidence.models.dto.SignInResponse
 import com.sr.covidence.models.dto.SignUpResponse
 import com.sr.covidence.network.NetworkService
 import com.sr.covidence.profile.ProfileFragment
@@ -83,11 +84,7 @@ class VerificationFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
 
-                    pref.edit()
-                        .putBoolean("isLogin", true)
-                        .apply()
-
-                    showFragment(ProfileFragment(), fragmentManager!!)
+                    signIn(pref.getString("user", "")!!, pref.getString("pass", "")!!)
 
                 } else {
                     Snackbar.make(
@@ -102,6 +99,44 @@ class VerificationFragment : Fragment() {
                 t.printStackTrace()
             }
         })
+    }
+
+    private fun signIn(user: String, pass: String) {
+
+        retrofitClientInstance.registrationEndpoint!!.signIn(
+            user = user,
+            pass = pass,
+            apiType = "mobile"
+        ).enqueue(object : Callback<SignInResponse> {
+
+            override fun onResponse(
+                call: Call<SignInResponse>,
+                response: Response<SignInResponse>
+            ) {
+                if (response.isSuccessful) {
+
+                    pref.edit()
+                        .putString("accessToken", response.body()!!.accessToken)
+                        .apply()
+
+                    pref.edit()
+                        .putString("secretAccessToken", response.body()!!.secretAccessToken)
+                        .apply()
+
+                    pref.edit()
+                        .putBoolean("isLogin", true)
+                        .apply()
+
+
+                    showFragment(ProfileFragment(), fragmentManager!!)
+                }
+            }
+
+            override fun onFailure(call: Call<SignInResponse>, t: Throwable) {
+                t.printStackTrace()
+            }
+        })
+
     }
 
 }

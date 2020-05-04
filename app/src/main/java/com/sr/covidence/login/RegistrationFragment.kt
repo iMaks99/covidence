@@ -94,14 +94,33 @@ class RegistrationFragment : Fragment(), View.OnClickListener {
                 val email = email_input.text.toString()
 
                 if (firstname.isNotEmpty() && lastname.isNotEmpty() && middlename.isNotEmpty() &&
-                    login.isNotEmpty() && password.isNotEmpty() &&
                     phone.isNotEmpty() && email.isNotEmpty()
                 ) {
 
-                    signUp(
-                        userAgreement, login, password, email,
-                        firstname, lastname, middlename, phone
-                    )
+
+                    if (login.length >= 6) {
+
+                        if (password.length >= 6) {
+
+                            signUp(
+                                userAgreement, login, password, email,
+                                firstname, lastname, middlename, phone
+                            )
+
+                        } else {
+                            Snackbar.make(
+                                this.view!!,
+                                "Пароль должен быть не меньше 6 символов",
+                                Snackbar.LENGTH_LONG
+                            ).show()
+                        }
+                    } else {
+                        Snackbar.make(
+                            this.view!!,
+                            "Логин должен быть не меньше 6 символов",
+                            Snackbar.LENGTH_LONG
+                        ).show()
+                    }
 
 
                 } else {
@@ -146,6 +165,14 @@ class RegistrationFragment : Fragment(), View.OnClickListener {
 
                     pref.edit()
                         .putString("email", email)
+                        .apply()
+
+                    pref.edit()
+                        .putString("user", user)
+                        .apply()
+
+                    pref.edit()
+                        .putString("pass", hashPass)
                         .apply()
 
                     showFragment(VerificationFragment(), fragmentManager!!)

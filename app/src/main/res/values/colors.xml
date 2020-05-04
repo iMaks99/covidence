@@ -36,5 +36,12 @@
     <color name="ripple">#66000000</color>
     <color name="mask">#E6000000</color>
 
+    <!--    journal-->
+    <color name="journal_item_background_color">#339100FD</color>
+
+    <!--    profile-->
+    <color name="profile_rating_good_text_color">#00ab6b</color>
+    <color name="profile_rating_bad_text_color">#e0203d</color>
+
 
 </resources>

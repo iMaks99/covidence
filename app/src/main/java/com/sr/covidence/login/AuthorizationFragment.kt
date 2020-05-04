@@ -80,7 +80,8 @@ class AuthorizationFragment : Fragment() {
 
         retrofitClientInstance.registrationEndpoint!!.signIn(
             user = user,
-            pass = pass
+            pass = pass,
+            apiType = "mobile"
         ).enqueue(object : Callback<SignInResponse> {
 
             override fun onResponse(
@@ -96,6 +97,11 @@ class AuthorizationFragment : Fragment() {
                     pref.edit()
                         .putString("secretAccessToken", response.body()!!.secretAccessToken)
                         .apply()
+
+                    pref.edit()
+                        .putBoolean("isLogin", true)
+                        .apply()
+
 
                     showFragment(ProfileFragment(), fragmentManager!!)
                 } else {

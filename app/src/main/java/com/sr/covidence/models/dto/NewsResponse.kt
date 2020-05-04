@@ -15,6 +15,8 @@ data class Post(
 data class News(
     @SerializedName("title") var title: String,
     @SerializedName("html") var html: List<HtmlPart>?,
+    @SerializedName("published_at") var date: Long,
+    @SerializedName("feature_image") var image: String,
     @SerializedName("tags") var tags: ArrayList<String>
 )
 
