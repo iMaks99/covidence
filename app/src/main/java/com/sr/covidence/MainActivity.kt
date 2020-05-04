@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.sr.covidence.advice.AdviceFragment
+import com.sr.covidence.browse.BrowseFragment
 import com.sr.covidence.chat_bot.ChatBotFragment
+import com.sr.covidence.journal.JournalFragment
 import com.sr.covidence.login.AuthorizationFragment
 import com.sr.covidence.profile.ProfileFragment
 import com.sr.covidence.utils.showFragment
@@ -32,12 +35,12 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
 
                 R.id.navigation_advice_item -> {
-                    //showFragment(OthersFragment())
+                    showFragment(AdviceFragment(), supportFragmentManager)
                     return@OnNavigationItemSelectedListener true
                 }
 
                 R.id.navigation_browse_item -> {
-                    //showFragment(ServicesFragment())
+                    showFragment(BrowseFragment(), supportFragmentManager)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_chat_bot_item -> {
@@ -45,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_journal_item -> {
-                    //showFragment(CalendarFragment())
+                    showFragment(JournalFragment(), supportFragmentManager)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigation_profile_item -> {
@@ -63,6 +66,3 @@ class MainActivity : AppCompatActivity() {
             false
         }
 }
-
-
-//<iframe src="https://coronavirus-monitor.ru/map-moscow" frameBorder="0" height="400" width="900" style="max-width: 100%;"></iframe>

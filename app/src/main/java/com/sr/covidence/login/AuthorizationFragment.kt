@@ -68,7 +68,7 @@ class AuthorizationFragment : Fragment() {
             } else {
                 Snackbar.make(
                     this.view!!,
-                    "Заполните все поля!",
+                    "Заполните все поля",
                     Snackbar.LENGTH_LONG
                 ).show()
             }

@@ -24,5 +24,10 @@
     <color name="authorization_text_color">#000000</color>
     <color name="authorization_btn_text_color">#ffffff</color>
 
+    <!--    browse-->
+    <color name="browse_count_case_disease_text_color">#FF5006</color>
+    <color name="browse_count_case_disease_title_text_color">#655E68</color>
+    <color name="browse_menu_item_background_color">#f3f3f3</color>
+    <color name="browse_menu_text_color">#9100FD</color>
 
 </resources>
