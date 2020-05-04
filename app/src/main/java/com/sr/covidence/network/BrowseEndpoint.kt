@@ -1,0 +1,4 @@
+package com.sr.covidence.network
+
+interface BrowseEndpoint {
+}
