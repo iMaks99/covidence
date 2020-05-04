@@ -1,5 +1,7 @@
 package com.sr.covidence.browse
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -43,6 +45,13 @@ class BrowseFragment : Fragment() {
 
         constraint_for_entertainment.setOnClickListener {
             showFragment(EntertainmentFragment(), fragmentManager!!)
+        }
+
+        constraint_for_predict.setOnClickListener {
+            val openURL = Intent(Intent.ACTION_VIEW)
+            openURL.data =
+                Uri.parse("https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html?fbclid=IwAR0p969bUhyvZpETpmPgrAP_oFhlp1-p9PmWUFa9GDUSg6-8GcRFrbBVJOQ#/bda7594740fd40299423467b48e9ecf6")
+            startActivity(openURL)
         }
 
 

@@ -25,9 +25,16 @@
     <color name="authorization_btn_text_color">#ffffff</color>
 
     <!--    browse-->
-    <color name="browse_count_case_disease_text_color">#FF5006</color>
+    <color name="browse_count_case_disease_text_color">#47CBB2</color>
     <color name="browse_count_case_disease_title_text_color">#655E68</color>
     <color name="browse_menu_item_background_color">#f3f3f3</color>
     <color name="browse_menu_text_color">#9100FD</color>
+    <color name="link_blue">#007AFF</color>
+
+
+    <!--ripple-->
+    <color name="ripple">#66000000</color>
+    <color name="mask">#E6000000</color>
+
 
 </resources>
