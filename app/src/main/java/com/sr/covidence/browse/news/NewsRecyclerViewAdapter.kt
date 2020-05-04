@@ -11,6 +11,9 @@ import com.sr.covidence.utils.GlideApp
 import kotlinx.android.synthetic.main.news_list_item.view.*
 import kotlinx.android.synthetic.main.news_photo_item.view.*
 import kotlinx.android.synthetic.main.news_text_item.view.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class NewsRecyclerViewAdapter(
     var items: ArrayList<News>,
@@ -38,7 +41,15 @@ class NewsRecyclerViewAdapter(
 
             itemView.title_news.text = item.title
 
+            itemView.date_news.text = SimpleDateFormat(
+                "dd.MM.yyyy",
+                Locale.ENGLISH
+            ).format(item.date)
+
             itemView.source_news.text = item.tags[0]
+
+            GlideApp.with(itemView.context).load(item.image)
+                .into(itemView.imageView2)
 
             for (i in item.html!!.iterator()) {
                 if (i.html != null) {

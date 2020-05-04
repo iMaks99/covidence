@@ -20,7 +20,6 @@ interface RegistrationEndpoint {
         @Field("phone") phone: String
     ): Call<SignUpResponse>
 
-    @FormUrlEncoded
     @GET("/user/signup/confirm/")
     fun sendCode(
         @Query("email") email: String,
@@ -30,8 +29,8 @@ interface RegistrationEndpoint {
     @FormUrlEncoded
     @POST("/user/login/")
     fun signIn(
-        @Query("user") user: String,
-        @Query("pass") pass: String,
-        @Query("apiType") apiType: String = "mobile"
+        @Field("user") user: String,
+        @Field("pass") pass: String,
+        @Field("apiType") apiType: String
     ): Call<SignInResponse>
 }
