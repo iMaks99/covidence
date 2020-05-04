@@ -7,5 +7,4 @@ data class SignInResponse (
     @SerializedName("status") var status: String,
     @SerializedName("accessToken") var accessToken: String,
     @SerializedName("secretAccessToken") var secretAccessToken: String
-
 )

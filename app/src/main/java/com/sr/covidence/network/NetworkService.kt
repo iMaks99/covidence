@@ -45,7 +45,7 @@ class NetworkService {
     }
 
     companion object {
-        private const val BASE_URL = "https://google.com"
+        private const val BASE_URL = "https://covidence-hackathon.herokuapp.com"
 
         var instance: NetworkService? = null
             get() {
