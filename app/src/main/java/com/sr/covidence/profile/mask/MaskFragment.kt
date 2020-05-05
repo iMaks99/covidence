@@ -90,6 +90,7 @@ class MaskFragment : Fragment() {
                 .setContentText("Пора сменить маску. Не забудь")
                 .setDefaults(Notification.DEFAULT_LIGHTS or Notification.DEFAULT_SOUND)
                 .setContentIntent(contentIntent)
+                .setChannelId("Covidence")
                 .setContentInfo("Info")
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
