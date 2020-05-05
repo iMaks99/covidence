@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="7 099"
+            android:text="5 795"
             android:textColor="@color/browse_count_case_disease_text_color"
             android:textSize="40sp"
             android:textStyle="bold"
