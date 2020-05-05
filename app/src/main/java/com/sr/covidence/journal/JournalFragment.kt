@@ -10,9 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sr.covidence.MainActivity
 import com.sr.covidence.R
 import com.sr.covidence.models.dto.GetDataForSendResponse
 import com.sr.covidence.models.dto.JournalResponse
@@ -159,20 +161,28 @@ class JournalFragment : Fragment() {
 
                     pref.edit().putString("emailForSend", "fk_bayern@mail.ru").apply()
 
-                    val send = Intent(Intent.ACTION_SENDTO)
-                    var uriText =
-                        "mailto:" + pref.getString(
-                            "emailForSend",
-                            ""
-                        ) + "?subject=Мой дневник" + "&body=" + Html.fromHtml(
-                            response.body()!!.text
-                        )
-                    uriText = uriText.replace(" ", "%20")
-                    val uri = Uri.parse(uriText)
-                    send.data = uri
-                    startActivity(
-                        Intent.createChooser(send, "Отправить email...")
-                    )
+//                    val send = Intent(Intent.ACTION_SENDTO)
+//                    var uriText =
+//                        "mailto:" + pref.getString(
+//                            "emailForSend",
+//                            ""
+//                        ) + "?subject=Мой дневник" + "&body=" + Html.fromHtml(
+//                            response.body()!!.text
+//                        )
+//                    uriText = uriText.replace(" ", "%20")
+//                    val uri = Uri.parse(uriText)
+//                    send.data = uri
+//                    startActivity(
+//                        Intent.createChooser(send, "Отправить email...")
+//                    )
+
+                    ShareCompat.IntentBuilder.from(context as MainActivity)
+                        .setType("message/rfc822")
+                        .addEmailTo("fk_bayern@mail.ru")
+                        .setSubject("Мой дневник")
+                        .setHtmlText(response.body()!!.text)
+                        .setChooserTitle("Test")
+                        .startChooser()
 
                 }
             }
