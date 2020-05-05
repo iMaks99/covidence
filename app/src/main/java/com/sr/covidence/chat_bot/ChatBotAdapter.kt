@@ -12,6 +12,7 @@ import com.sr.covidence.models.dto.TestResultDto
 import com.sr.covidence.models.model.UserMessage
 import com.sr.covidence.models.enums.ChatViewType
 import com.sr.covidence.models.model.BotCommandMessage
+import com.sr.covidence.models.model.BotDefaultMessage
 import com.sr.covidence.utils.custom.OnCommandItemClickListener
 import com.sr.covidence.utils.dpToPx
 import kotlinx.android.synthetic.main.chat_bot_command_message.view.*
@@ -98,6 +99,7 @@ class ChatBotAdapter(
             is BotQuestionMessageDto -> ChatViewType.QUESTION.viewType
             is BotCommandMessage -> ChatViewType.COMMAND.viewType
             is TestResultDto -> ChatViewType.DEFAULT.viewType
+            is BotDefaultMessage -> ChatViewType.DEFAULT.viewType
             else -> TODO()
         }
 }

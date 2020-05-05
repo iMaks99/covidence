@@ -64,7 +64,7 @@
         android:layout_height="56dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="@drawable/registration_btn_selector"
+        android:backgroundTint="@color/authorization_textedit_text_color"
         android:src="@drawable/ic_add_24px"
         android:tint="@color/toolbar_separator_color"
         android:visibility="gone"
