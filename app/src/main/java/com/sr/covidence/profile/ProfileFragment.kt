@@ -172,11 +172,6 @@ class ProfileFragment : Fragment() {
             pref.edit().putString("phoneAutoSend", number_phone_friend.text.toString()).apply()
         }
 
-        rating_for_user.setOnClickListener {
-            //showInfoAboutRating()
-        }
-
-
         progress_bar.visibility = View.GONE
         scroll_view_profile.visibility = View.VISIBLE
     }
@@ -219,49 +214,5 @@ class ProfileFragment : Fragment() {
             }
         }
     }
-
-//    private fun showInfoAboutRating(){
-//        val dialogBuilder = AlertDialog.Builder(requireContext())
-//
-//        val alertDialogSuccessMessage = dialogBuilder.create()
-//
-//        alertDialogSuccessMessage.show()
-//
-//        alertDialogSuccessMessage.window!!.setLayout(
-//            ViewGroup.LayoutParams.WRAP_CONTENT,
-//            ViewGroup.LayoutParams.WRAP_CONTENT
-//        )
-//
-//        alertDialogSuccessMessage.window!!.setContentView(
-//            this.layoutInflater.inflate(
-//                R.layout.competition_success_registration_layout,
-//                null
-//            )
-//        )
-//
-//        alertDialogSuccessMessage.window!!.setBackgroundDrawable(
-//            requireContext().resources.getDrawable(
-//                R.drawable.profile_authorization_item_shape
-//            )
-//        )
-//
-//        if (!pref.getBoolean("darkMode", false))
-//            alertDialogSuccessMessage.competitionSuccessRegistrationImage.setImageResource(
-//                R.drawable.donation_success_modal_lvl_2
-//            )
-//        else
-//            alertDialogSuccessMessage.competitionSuccessRegistrationImage.setImageResource(
-//                R.drawable.donation_success_modal_lvl_2_dark
-//            )
-//
-//        alertDialogSuccessMessage.competitionSuccessRegistrationTitle.text = "Ого, уже второй!"
-//        alertDialogSuccessMessage.competitionSuccessRegistrationSubtitle.text =
-//            "За каждый лайк вашего комментария +1,5 балла к рейтингу"
-//        alertDialogSuccessMessage.competitionSuccessRegistrationConfirmButton.text = "Отлично"
-//
-//        alertDialogSuccessMessage.competitionSuccessRegistrationConfirmButton.setOnClickListener {
-//            alertDialogSuccessMessage.dismiss()
-//        }
-//    }
 
 }

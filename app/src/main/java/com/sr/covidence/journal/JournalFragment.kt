@@ -1,11 +1,8 @@
 package com.sr.covidence.journal
 
-import android.content.Intent
+import android.app.Activity
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Bundle
-import android.text.Html
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -136,13 +133,24 @@ class JournalFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
 
-                    ShareCompat.IntentBuilder.from(context as MainActivity)
+//                    ShareCompat.IntentBuilder.from(context as MainActivity)
+//                        .setType("message/rfc822")
+//                        .addEmailTo(pref.getString("emailForSend", "")!!)
+//                        .setSubject("Мой дневник")
+//                        .setHtmlText(response.body()!!.text)
+//                        .setChooserTitle("Отправить email...")
+//                        .startChooser()
+                    
+
+                    val shareIntent = ShareCompat.IntentBuilder.from(context as MainActivity)
                         .setType("message/rfc822")
                         .addEmailTo(pref.getString("emailForSend", "")!!)
                         .setSubject("Мой дневник")
                         .setHtmlText(response.body()!!.text)
-                        .setChooserTitle("Отправить email...")
-                        .startChooser()
+                        .intent
+                    if (shareIntent.resolveActivity((context as MainActivity).packageManager) != null) {
+                        startActivity(shareIntent)
+                    }
 
                 }
             }
