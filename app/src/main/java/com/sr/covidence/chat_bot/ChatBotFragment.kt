@@ -32,6 +32,8 @@ class ChatBotFragment : Fragment(), OnCommandItemClickListener {
     private lateinit var questions: ArrayList<BotQuestionMessageDto>
 
     private lateinit var chatBotAdapter: ChatBotAdapter
+    private var isFirstLaunch = true
+    private var isAnswered = true
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +50,8 @@ class ChatBotFragment : Fragment(), OnCommandItemClickListener {
 
         chatBotAdapter = ChatBotAdapter(messageList, this)
         chatBotRecyclerView.adapter = chatBotAdapter
+
+        isFirstLaunch = pref.getBoolean("isFirstLaunch", true)
 
         if (pref.getBoolean("isFirstLaunch", true)) {
             sendMessage(
@@ -74,7 +78,16 @@ class ChatBotFragment : Fragment(), OnCommandItemClickListener {
 
 
         chatBotEntrySend.setOnClickListener {
-            if (chatBotEntryText.text.isNullOrBlank()) return@setOnClickListener
+            if (chatBotEntryText.text.isNullOrBlank() || !isAnswered) return@setOnClickListener
+
+            isAnswered = false
+
+            if (!isFirstLaunch) {
+                messageList.clear()
+                chatBotAdapter.notifyDataSetChanged()
+            }
+            else
+                isFirstLaunch = false
 
             sendMessage(
                 UserMessage(
@@ -125,6 +138,12 @@ class ChatBotFragment : Fragment(), OnCommandItemClickListener {
 
         questionList.forEach {
             if (it is BotQuestionMessageDto) {
+                if (!it.answers.filter { ans -> ans.isAnswered == null }.isNullOrEmpty()) return
+            }
+        }
+
+        questionList.forEach {
+            if (it is BotQuestionMessageDto) {
                 it.isAnswered = true
                 val currentValue =
                     it.answers.filter { ans -> ans.isAnswered != null && ans.isAnswered!! }[0].value
@@ -137,6 +156,7 @@ class ChatBotFragment : Fragment(), OnCommandItemClickListener {
 
         botViewModel.sendAnswerList(BotAnswerRequest(answers))
             .observe(viewLifecycleOwner, Observer {
+                isAnswered = true
                 sendMessage(it, true)
 
                 when {

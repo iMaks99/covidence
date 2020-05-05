@@ -20,7 +20,6 @@ class ChatBotViewModel : ViewModel() {
     private val mBotRepository = NetworkService.instance!!.botEndpoint
 
     private var questionsList = MutableLiveData<ArrayList<BotQuestionMessageDto>>()
-    private var testResult = MutableLiveData<TestResultDto>()
 
     fun getQuestionList(): LiveData<ArrayList<BotQuestionMessageDto>> {
         mBotRepository!!.getBotQuestions()
@@ -45,6 +44,7 @@ class ChatBotViewModel : ViewModel() {
     }
 
     fun sendAnswerList(answer: BotAnswerRequest): LiveData<TestResultDto> {
+        val testResult = MutableLiveData<TestResultDto>()
         mBotRepository!!.sendBotAnswers(answer)
             .enqueue(object : Callback<BotAnswerMessageResponseDto> {
                 override fun onFailure(call: Call<BotAnswerMessageResponseDto>, t: Throwable) {

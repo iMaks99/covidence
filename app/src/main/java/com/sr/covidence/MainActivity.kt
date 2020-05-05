@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         navigation_menu.setOnNavigationItemSelectedListener(mOnNavigationMenuItemSelectedListener)
         navigation_menu.selectedItemId = R.id.navigation_chat_bot_item
-
-        showFragment(ChatBotFragment(), supportFragmentManager)
     }
 
     private val mOnNavigationMenuItemSelectedListener =

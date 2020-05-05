@@ -20,6 +20,9 @@ class ChatBotCommandViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
             itemView.chatBotCommandMessageContent.setOnClickListener {
                 itemClickListener.onItemClicked(position)
             }
+
+            itemView.chatBotCommandMessageContent.isEnabled = true
+
         } else {
             itemView.chatBotCommandMessageContent.text = "Вы уже ответили"
             itemView.chatBotCommandMessageContent.isEnabled = false
