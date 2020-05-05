@@ -1,17 +1,17 @@
 package com.sr.covidence.journal
 
-import android.app.Activity
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ShareCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sr.covidence.MainActivity
 import com.sr.covidence.R
 import com.sr.covidence.models.dto.GetDataForSendResponse
 import com.sr.covidence.models.dto.JournalResponse
@@ -140,17 +140,28 @@ class JournalFragment : Fragment() {
 //                        .setHtmlText(response.body()!!.text)
 //                        .setChooserTitle("Отправить email...")
 //                        .startChooser()
-                    
 
-                    val shareIntent = ShareCompat.IntentBuilder.from(context as MainActivity)
-                        .setType("message/rfc822")
-                        .addEmailTo(pref.getString("emailForSend", "")!!)
-                        .setSubject("Мой дневник")
-                        .setHtmlText(response.body()!!.text)
-                        .intent
-                    if (shareIntent.resolveActivity((context as MainActivity).packageManager) != null) {
-                        startActivity(shareIntent)
-                    }
+
+//                    val shareIntent = ShareCompat.IntentBuilder.from(context as MainActivity)
+//                        .setType("message/rfc822")
+//                        .addEmailTo(pref.getString("emailForSend", "")!!)
+//                        .setSubject("Мой дневник")
+//                        .setHtmlText(response.body()!!.text)
+//                        .intent
+//                    if (shareIntent.resolveActivity((context as MainActivity).packageManager) != null) {
+//                        startActivity(shareIntent)
+//                    }
+
+                    val shareIntent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"))
+                    shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Мой дневник")
+                    shareIntent.putExtra(
+                        Intent.EXTRA_TEXT,
+                        Html.fromHtml(
+                            response.body()!!.text
+                        )
+                    )
+                    startActivity(shareIntent)
+
 
                 }
             }

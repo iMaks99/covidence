@@ -1,16 +1,24 @@
 package com.sr.covidence.profile.pass
 
 import android.R.attr.phoneNumber
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
+import com.sr.covidence.MainActivity
 import com.sr.covidence.R
 import com.sr.covidence.utils.showFragment
 import kotlinx.android.synthetic.main.custom_toolbar.view.*
@@ -72,6 +80,46 @@ class PassFragment : Fragment() {
 
             intent.putExtra("sms_body", pref.getString("templateForPass", ""))
             startActivity(intent)
+        }
+
+        set_timer_btn.setOnClickListener {
+            val intent = Intent(context, MainActivity::class.java)
+            val contentIntent =
+                PendingIntent.getBroadcast(
+                    context,
+                    0,
+                    intent,
+                    0
+                )
+
+            val b: NotificationCompat.Builder = NotificationCompat.Builder(context)
+
+            b.setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.drawable.ic_technology)
+                .setTicker("Hearty365")
+                .setContentTitle("Твой пропуск устарел")
+                .setContentText("Не забудь обновить")
+                .setDefaults(Notification.DEFAULT_LIGHTS or Notification.DEFAULT_SOUND)
+                .setContentIntent(contentIntent)
+                .setChannelId("Covidence")
+                .setContentInfo("Info")
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                (context!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).createNotificationChannel(
+                    NotificationChannel(
+                        "Covidence",
+                        "Covidence",
+                        NotificationManager.IMPORTANCE_LOW
+                    )
+                )
+            }
+
+            (context!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager).notify(
+                1,
+                b.build()
+            )
         }
     }
 
