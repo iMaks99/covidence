@@ -77,6 +77,8 @@ class JournalFragment : Fragment() {
 
     private fun buildRecycler() {
 
+        listOfNote.reverse()
+
         newsRecyclerView =
             JournalRecyclerViewAdapter(listOfNote,
                 object : JournalRecyclerViewAdapter.Callback {
@@ -121,31 +123,6 @@ class JournalFragment : Fragment() {
 
     private fun getDataForSend() {
 
-//        var content = ""
-//
-//        for(i in listOfNote){
-//            val date = DateUtils.getRelativeTimeSpanString(
-//                i.dataCreation * 1000,
-//                System.currentTimeMillis(),
-//                DateUtils.SECOND_IN_MILLIS
-//            )
-//            content += i.recordData + "\n" + date.toString() + "\n\n"
-//        }
-//
-//        pref.edit().putString("emailForSend", "fk_bayern@mail.ru").apply()
-//
-//        val send = Intent(Intent.ACTION_SENDTO)
-//        var uriText =
-//            "mailto:" + pref.getString(
-//                "emailForSend",
-//                ""
-//            ) + "?subject=Мой дневник" + "&body=" + content
-//
-//        uriText = uriText.replace(" ", "%20")
-//        val uri = Uri.parse(uriText)
-//        send.data = uri
-//        startActivity(Intent.createChooser(send, "Отправить email..."))
-
         retrofitClientInstance.journalEndpoint!!.getDataForShare(
             accessToken = pref.getString("accessToken", "")!!,
             secretAccessToken = pref.getString("secretAccessToken", "")!!,
@@ -159,29 +136,12 @@ class JournalFragment : Fragment() {
             ) {
                 if (response.isSuccessful) {
 
-                    pref.edit().putString("emailForSend", "fk_bayern@mail.ru").apply()
-
-//                    val send = Intent(Intent.ACTION_SENDTO)
-//                    var uriText =
-//                        "mailto:" + pref.getString(
-//                            "emailForSend",
-//                            ""
-//                        ) + "?subject=Мой дневник" + "&body=" + Html.fromHtml(
-//                            response.body()!!.text
-//                        )
-//                    uriText = uriText.replace(" ", "%20")
-//                    val uri = Uri.parse(uriText)
-//                    send.data = uri
-//                    startActivity(
-//                        Intent.createChooser(send, "Отправить email...")
-//                    )
-
                     ShareCompat.IntentBuilder.from(context as MainActivity)
                         .setType("message/rfc822")
-                        .addEmailTo("fk_bayern@mail.ru")
+                        .addEmailTo(pref.getString("emailForSend", "")!!)
                         .setSubject("Мой дневник")
                         .setHtmlText(response.body()!!.text)
-                        .setChooserTitle("Test")
+                        .setChooserTitle("Отправить email...")
                         .startChooser()
 
                 }

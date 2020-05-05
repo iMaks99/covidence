@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/authorization_background_color"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".profile.mask.MaskFragment">
+    tools:context=".profile.pass.PassFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -16,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Toolbar
-            android:id="@+id/mask_toolbar"
+            android:id="@+id/pass_toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="@color/toolbar_color"
@@ -32,7 +33,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <EditText
-        android:id="@+id/count_mask"
+        android:id="@+id/count_exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -51,9 +52,9 @@
         android:drawableStart="@drawable/ic_remove_24px"
         android:drawableTint="@color/authorization_background_color"
         android:paddingStart="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/count_mask"
-        app:layout_constraintEnd_toStartOf="@+id/count_mask"
-        app:layout_constraintTop_toTopOf="@+id/count_mask" />
+        app:layout_constraintBottom_toBottomOf="@+id/count_exit"
+        app:layout_constraintEnd_toStartOf="@+id/count_exit"
+        app:layout_constraintTop_toTopOf="@+id/count_exit" />
 
     <Button
         android:id="@+id/bottomAdd"
@@ -64,9 +65,9 @@
         android:drawableStart="@drawable/ic_add_24px"
         android:drawableTint="@color/authorization_background_color"
         android:paddingStart="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/count_mask"
-        app:layout_constraintStart_toEndOf="@+id/count_mask"
-        app:layout_constraintTop_toTopOf="@+id/count_mask" />
+        app:layout_constraintBottom_toBottomOf="@+id/count_exit"
+        app:layout_constraintStart_toEndOf="@+id/count_exit"
+        app:layout_constraintTop_toTopOf="@+id/count_exit" />
 
     <TextView
         android:id="@+id/textView5"
@@ -74,23 +75,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="Введите количество масок, которые у вас есть.\n Так будет проще вести учет"
+        android:text="Отмечайте свои выходы из дома. Так вам \nбудет проще оценивать уровень самоизоляции"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/count_mask" />
+        app:layout_constraintTop_toBottomOf="@+id/count_exit" />
 
     <Button
         android:id="@+id/set_timer_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="55dp"
         android:background="@drawable/registration_btn_selector"
-        android:text="Напомнить сменить маску!"
+        android:text="Напомнить заказать пропуск!"
         android:textAllCaps="false"
-        android:textSize="20sp"
         android:textColor="@color/authorization_background_color"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -99,12 +100,40 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="Нажав на кнопку, вы включите уведомление. \nЧерез 3 часа мы напомним вам сменить маску"
+        android:text="Нажав на кнопку, вы включите уведомление. \nЧерез 24 часа мы напомним вам заказать\n новый пропуск"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/set_timer_btn" />
 
+    <Button
+        android:id="@+id/get_pass_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="55dp"
+        android:background="@drawable/registration_btn_selector"
+        android:text="Получить пропуск"
+        android:textAllCaps="false"
+        android:textColor="@color/authorization_background_color"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Чтобы получить пропуск, перейдите\n в раздел настройки на этой странице\n и заполните шаблон"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/get_pass_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

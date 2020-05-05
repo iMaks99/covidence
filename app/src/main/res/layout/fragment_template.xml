@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/authorization_background_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".profile.pass.TemplateFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:stateListAnimator="@animator/appbar_not_elevated"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Toolbar
+            android:id="@+id/template_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/toolbar_color"
+            android:contentInsetStart="0dp"
+            android:contentInsetLeft="0dp"
+            android:contentInsetEnd="0dp"
+            android:contentInsetRight="0dp"
+            app:contentInsetEnd="0dp"
+            app:contentInsetLeft="0dp"
+            app:contentInsetRight="0dp"
+            app:contentInsetStart="0dp" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioGroup
+                android:id="@+id/doc_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="55dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/type_passport_rf"
+                    android:text="Паспорт РФ"
+                    android:buttonTint="@color/authorization_textedit_text_color"
+                    android:textColor="@color/authorization_textedit_text_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/type_passport_foreign"
+                    android:text="Паспорт иностранного государства"
+                    android:buttonTint="@color/authorization_textedit_text_color"
+                    android:textColor="@color/authorization_textedit_text_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <RadioButton
+                    android:id="@+id/type_not_found"
+                    android:buttonTint="@color/authorization_textedit_text_color"
+                    android:textColor="@color/authorization_textedit_text_color"
+                    android:layout_width="match_parent"
+                    android:text="Иной документ"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/serial_pass_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="55dp"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/doc_type"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/serial_pass_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Серия паспорта"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/number_pass_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="55dp"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/serial_pass_layout"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/number_pass_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Номер паспорта"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/moving_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="55dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_pass_layout">
+
+                <RadioButton
+                    android:id="@+id/type_moving_car"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/authorization_textedit_text_color"
+                    android:text="Собственный транспорт "
+                    android:textColor="@color/authorization_textedit_text_color" />
+
+                <RadioButton
+                    android:id="@+id/type_moving_bus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/authorization_textedit_text_color"
+                    android:text="Общественный транспорт "
+                    android:textColor="@color/authorization_textedit_text_color" />
+
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/number_car"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="55dp"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/moving_type"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/number_car_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Номер транспортного средства"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/number_troika"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginEnd="55dp"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_car"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/number_troika_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Номер карты Тройка"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/number_strelka"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="55dp"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_troika"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/number_strelka_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Номер карты Стрелка"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/number_inn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="55dp"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_strelka"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/number_inn_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="ИНН организации"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/title_org"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="55dp"
+                android:textColorHint="@color/authorization_textedit_text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/number_inn"
+                app:passwordToggleEnabled="false"
+                app:passwordToggleTint="@color/authorization_textedit_text_color">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/title_org_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:hint="Краткое название организации"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/authorization_text_color"
+                    android:textColorHighlight="@color/authorization_textedit_text_color"
+                    android:textColorHint="@color/authorization_textedit_text_color"
+                    android:textColorLink="@color/authorization_textedit_text_color"
+                    android:textSize="15sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

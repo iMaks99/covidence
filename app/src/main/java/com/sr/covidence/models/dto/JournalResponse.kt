@@ -9,7 +9,7 @@ data class JournalResponse(
 )
 
 data class Note(
-    @SerializedName("dataCreation") var dataCreation: Long,
+    @SerializedName("dateCreation") var dataCreation: Long,
     @SerializedName("dateModification") var dateModification: Long,
     @SerializedName("_id") var id: String,
     @SerializedName("text") var recordData: String

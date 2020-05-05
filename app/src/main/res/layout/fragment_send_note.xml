@@ -44,7 +44,7 @@
             android:layout_height="0dp"
             android:background="@color/authorization_btn_text_color"
             android:gravity="start"
-            android:hint="Опишите ваш день"
+            android:hint="Здесь можно рассказать о самочувствии во время самоизоляции, людях, с которыми вы контактировали, и о любой другой важной информации"
             android:lineSpacingExtra="5sp"
             android:padding="20dp"
             android:textColor="@color/authorization_text_color"

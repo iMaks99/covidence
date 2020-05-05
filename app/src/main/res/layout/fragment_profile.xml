@@ -47,15 +47,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +126,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="4dp"
                     android:layout_marginBottom="16dp"
-                    android:text="Осталось выходов: "
+                    android:text="Выходов за неделю: "
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/browse_news_chevron"
@@ -196,13 +196,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="16dp"
+                        android:text="Маска"
                         android:textColor="@color/authorization_textedit_text_color"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_mask_image"
-                        android:text="Маска" />
+                        app:layout_constraintTop_toBottomOf="@+id/profile_mask_image" />
 
                     <ImageView
                         android:id="@+id/profile_mask_image"
@@ -233,13 +233,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="16dp"
+                        android:text="Пропуск"
                         android:textColor="@color/authorization_textedit_text_color"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_pass_image"
-                        android:text="Пропуск" />
+                        app:layout_constraintTop_toBottomOf="@+id/profile_pass_image" />
 
                     <ImageView
                         android:id="@+id/profile_pass_image"
@@ -286,7 +286,7 @@
                         android:gravity="center"
                         android:text="Сервис онлайн доктор"
                         android:textColor="@color/authorization_textedit_text_color"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -297,7 +297,8 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="16dp"
-                        android:src="@drawable/ic_first_aid_kit"
+                        android:rotation="270"
+                        android:src="@drawable/ic_logo_mmt"
                         android:tint="@color/browse_menu_text_color"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -321,9 +322,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginBottom="16dp"
-                        android:text="Вызов скорой"
+                        android:gravity="center"
+                        android:text="Вызов скорой\nпомощи"
                         android:textColor="@color/authorization_textedit_text_color"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -351,6 +353,7 @@
                 android:layout_marginStart="55dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="55dp"
+                android:layout_marginBottom="40dp"
                 android:background="@drawable/registration_btn_selector"
                 android:enabled="true"
                 android:paddingTop="12dp"
@@ -362,7 +365,58 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linear_for_container_two" />
+                app:layout_constraintTop_toBottomOf="@+id/constraint_for_autosend" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_for_autosend"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/browse_btn_item_shape"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear_for_container_two">
+
+                <Switch
+                    android:id="@+id/switch_for_autosend"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:paddingEnd="15dp"
+                    android:text="Автооповещение друга"
+                    android:textColor="@color/authorization_textedit_text_color"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/number_phone_friend"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toBottomOf="@+id/switch_for_autosend" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_people_outline_24px"
+                    android:tint="@color/browse_menu_text_color"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

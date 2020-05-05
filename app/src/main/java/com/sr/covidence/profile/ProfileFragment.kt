@@ -1,29 +1,38 @@
 package com.sr.covidence.profile
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.telephony.SmsManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
+import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import com.sr.covidence.R
-import com.sr.covidence.journal.JournalFragment
 import com.sr.covidence.login.AuthorizationFragment
 import com.sr.covidence.models.dto.GetUserResponse
-import com.sr.covidence.models.dto.JournalResponse
 import com.sr.covidence.models.dto.User
 import com.sr.covidence.network.NetworkService
+import com.sr.covidence.profile.mask.MaskFragment
+import com.sr.covidence.profile.pass.PassFragment
 import com.sr.covidence.utils.showFragment
 import kotlinx.android.synthetic.main.custom_toolbar.view.*
 import kotlinx.android.synthetic.main.fragment_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 class ProfileFragment : Fragment() {
@@ -50,9 +59,13 @@ class ProfileFragment : Fragment() {
         profile_toolbar.addView(v)
         v.profile_title.text = "Профиль"
         v.profile_back_btn.visibility = View.GONE
-        v.profile_settings_image.visibility = View.GONE
+        v.profile_settings_image.setOnClickListener {
+            showFragment(AdditionalnfoProfileFragment(), fragmentManager!!)
+        }
 
         exit_button.setOnClickListener {
+
+            pref.edit().clear().apply()
 
             pref.edit()
                 .putBoolean("isLogin", false)
@@ -62,14 +75,12 @@ class ProfileFragment : Fragment() {
 
         }
 
-        getProfile()
-
         constraint_for_mask.setOnClickListener {
-
+            showFragment(MaskFragment(), fragmentManager!!)
         }
 
         constraint_for_pass.setOnClickListener {
-
+            showFragment(PassFragment(), fragmentManager!!)
         }
 
         constraint_for_online_doctor.setOnClickListener {
@@ -80,8 +91,11 @@ class ProfileFragment : Fragment() {
         }
 
         constraint_for_aid.setOnClickListener {
-
+            callAid()
         }
+
+        getProfile()
+
     }
 
     private fun getProfile() {
@@ -115,6 +129,8 @@ class ProfileFragment : Fragment() {
     @SuppressLint("SetTextI18n")
     private fun buildProfile() {
 
+        pref.edit().putString("rating", "5").apply()
+
         profile_fio.text =
             user.lastname + " " + user.firstname
 
@@ -126,21 +142,126 @@ class ProfileFragment : Fragment() {
         }
 
         profile_count_exit.text = pref.getString("countExit", "0")
-        if (profile_count_exit.text.toString().toInt() > 1) {
+        if (profile_count_exit.text.toString().toInt() <= 3) {
             profile_count_exit.setTextColor(context!!.resources.getColor(R.color.profile_rating_good_text_color))
         } else {
             profile_count_exit.setTextColor(context!!.resources.getColor(R.color.profile_rating_bad_text_color))
         }
 
         rating_for_user.text = pref.getString("rating", "0")
-        if (rating_for_user.text.toString().toInt() > 1) {
+        if (rating_for_user.text.toString().toInt() > 2) {
             rating_for_user.setTextColor(context!!.resources.getColor(R.color.profile_rating_good_text_color))
         } else {
             rating_for_user.setTextColor(context!!.resources.getColor(R.color.profile_rating_bad_text_color))
         }
 
+        switch_for_autosend.isChecked = pref.getBoolean("autoSend", false)
+        number_phone_friend.setText(
+            pref.getString("phoneAutoSend", "")!!,
+            TextView.BufferType.EDITABLE
+        )
+
+        switch_for_autosend.setOnCheckedChangeListener { _, _ ->
+            if (switch_for_autosend.isChecked)
+                pref.edit().putBoolean("autoSend", true).apply()
+            else
+                pref.edit().putBoolean("autoSend", false).apply()
+        }
+
+        number_phone_friend.addTextChangedListener {
+            pref.edit().putString("phoneAutoSend", number_phone_friend.text.toString()).apply()
+        }
+
+        rating_for_user.setOnClickListener {
+            //showInfoAboutRating()
+        }
+
+
         progress_bar.visibility = View.GONE
         scroll_view_profile.visibility = View.VISIBLE
     }
+
+    @SuppressLint("MissingPermission")
+    private fun callAid() {
+        val callIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "112"))
+        startActivity(callIntent)
+
+        if (switch_for_autosend.isChecked) {
+            try {
+                val sms = SmsManager.getDefault()
+
+                val locationManager =
+                    context!!.getSystemService(Context.LOCATION_SERVICE) as LocationManager?
+
+                val locationGPS: Location? =
+                    locationManager!!.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
+                val addresses: List<Address>
+                val geocoder: Geocoder = Geocoder(context, Locale.getDefault())
+
+                addresses = geocoder.getFromLocation(
+                    locationGPS!!.latitude,
+                    locationGPS.longitude,
+                    1
+                )
+
+                val message = "Привет. Я вызвал скорую на этот адрес: " + addresses[0]
+                sms.sendTextMessage(
+                    number_phone_friend.text.toString(),
+                    null,
+                    message,
+                    null,
+                    null
+                )
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+//    private fun showInfoAboutRating(){
+//        val dialogBuilder = AlertDialog.Builder(requireContext())
+//
+//        val alertDialogSuccessMessage = dialogBuilder.create()
+//
+//        alertDialogSuccessMessage.show()
+//
+//        alertDialogSuccessMessage.window!!.setLayout(
+//            ViewGroup.LayoutParams.WRAP_CONTENT,
+//            ViewGroup.LayoutParams.WRAP_CONTENT
+//        )
+//
+//        alertDialogSuccessMessage.window!!.setContentView(
+//            this.layoutInflater.inflate(
+//                R.layout.competition_success_registration_layout,
+//                null
+//            )
+//        )
+//
+//        alertDialogSuccessMessage.window!!.setBackgroundDrawable(
+//            requireContext().resources.getDrawable(
+//                R.drawable.profile_authorization_item_shape
+//            )
+//        )
+//
+//        if (!pref.getBoolean("darkMode", false))
+//            alertDialogSuccessMessage.competitionSuccessRegistrationImage.setImageResource(
+//                R.drawable.donation_success_modal_lvl_2
+//            )
+//        else
+//            alertDialogSuccessMessage.competitionSuccessRegistrationImage.setImageResource(
+//                R.drawable.donation_success_modal_lvl_2_dark
+//            )
+//
+//        alertDialogSuccessMessage.competitionSuccessRegistrationTitle.text = "Ого, уже второй!"
+//        alertDialogSuccessMessage.competitionSuccessRegistrationSubtitle.text =
+//            "За каждый лайк вашего комментария +1,5 балла к рейтингу"
+//        alertDialogSuccessMessage.competitionSuccessRegistrationConfirmButton.text = "Отлично"
+//
+//        alertDialogSuccessMessage.competitionSuccessRegistrationConfirmButton.setOnClickListener {
+//            alertDialogSuccessMessage.dismiss()
+//        }
+//    }
 
 }
