@@ -25,6 +25,9 @@ class NetworkService {
     val profileEndpoint: ProfileEndpoint?
         get() = mRetrofit?.create(ProfileEndpoint::class.java)
 
+    val adviceEndpoint: AdviceEndpoint?
+        get() = mRetrofit?.create(AdviceEndpoint::class.java)
+
     init {
 
         val loggingInterceptor = HttpLoggingInterceptor()
