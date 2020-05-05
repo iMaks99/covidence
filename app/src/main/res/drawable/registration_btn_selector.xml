@@ -11,7 +11,7 @@
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
             <corners android:radius="10dp" />
-            <solid android:color="@color/authorization_textedit_text_color"  />
+            <solid android:color="@color/menu_navigation_disable_item_color"  />
         </shape>
     </item>
 </selector>

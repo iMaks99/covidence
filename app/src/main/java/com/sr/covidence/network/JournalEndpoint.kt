@@ -1,5 +1,6 @@
 package com.sr.covidence.network
 
+import com.sr.covidence.models.dto.GetDataForSendResponse
 import com.sr.covidence.models.dto.JournalResponse
 import com.sr.covidence.models.dto.RecordData
 import com.sr.covidence.models.dto.SendNoteDto
@@ -25,5 +26,13 @@ interface JournalEndpoint {
         @Field("text") text: String,
         @Field("covidLikelihood") covidLikelihood: String
     ): Call<SendNoteDto>
+
+    @GET("/diary/find-records/all/")
+    fun getDataForShare(
+        @Query("accessToken") accessToken: String,
+        @Query("secretAccessToken") secretAccessToken: String,
+        @Query("apiType") apiType: String,
+        @Query("email") email: String
+    ): Call<GetDataForSendResponse>
 
 }
