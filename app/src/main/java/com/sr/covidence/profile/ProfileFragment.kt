@@ -1,7 +1,9 @@
 package com.sr.covidence.profile
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -61,6 +63,25 @@ class ProfileFragment : Fragment() {
         }
 
         getProfile()
+
+        constraint_for_mask.setOnClickListener {
+
+        }
+
+        constraint_for_pass.setOnClickListener {
+
+        }
+
+        constraint_for_online_doctor.setOnClickListener {
+            val openURL = Intent(Intent.ACTION_VIEW)
+            openURL.data =
+                Uri.parse("https://onlinedoctor.ru/doctors/")
+            startActivity(openURL)
+        }
+
+        constraint_for_aid.setOnClickListener {
+
+        }
     }
 
     private fun getProfile() {
@@ -96,6 +117,27 @@ class ProfileFragment : Fragment() {
 
         profile_fio.text =
             user.lastname + " " + user.firstname
+
+        profile_count_mask.text = pref.getString("countMask", "0")
+        if (profile_count_mask.text.toString().toInt() > 1) {
+            profile_count_mask.setTextColor(context!!.resources.getColor(R.color.profile_rating_good_text_color))
+        } else {
+            profile_count_mask.setTextColor(context!!.resources.getColor(R.color.profile_rating_bad_text_color))
+        }
+
+        profile_count_exit.text = pref.getString("countExit", "0")
+        if (profile_count_exit.text.toString().toInt() > 1) {
+            profile_count_exit.setTextColor(context!!.resources.getColor(R.color.profile_rating_good_text_color))
+        } else {
+            profile_count_exit.setTextColor(context!!.resources.getColor(R.color.profile_rating_bad_text_color))
+        }
+
+        rating_for_user.text = pref.getString("rating", "0")
+        if (rating_for_user.text.toString().toInt() > 1) {
+            rating_for_user.setTextColor(context!!.resources.getColor(R.color.profile_rating_good_text_color))
+        } else {
+            rating_for_user.setTextColor(context!!.resources.getColor(R.color.profile_rating_bad_text_color))
+        }
 
         progress_bar.visibility = View.GONE
         scroll_view_profile.visibility = View.VISIBLE
