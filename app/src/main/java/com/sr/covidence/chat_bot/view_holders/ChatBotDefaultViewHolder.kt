@@ -17,7 +17,7 @@ class ChatBotDefaultViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
     fun bind(message: MessageInterface) {
         itemView.chatBotDefaultMessageContent.text = when (message) {
             is TestResultDto -> {
-                "Вероятность заболевания ${message.probability.format(2)}"
+                "Вероятность заболевания ${message.probability.format(2)}%"
             }
             is BotDefaultMessage -> {
 

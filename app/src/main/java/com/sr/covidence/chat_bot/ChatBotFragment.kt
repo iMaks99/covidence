@@ -20,7 +20,9 @@ import com.sr.covidence.models.model.UserMessage
 import com.sr.covidence.models.requests.BotAnswerItemRequest
 import com.sr.covidence.models.requests.BotAnswerRequest
 import com.sr.covidence.utils.custom.OnCommandItemClickListener
+import kotlinx.android.synthetic.main.custom_toolbar.view.*
 import kotlinx.android.synthetic.main.fragment_chat_bot.*
+import kotlinx.android.synthetic.main.fragment_journal.*
 
 
 class ChatBotFragment : Fragment(), OnCommandItemClickListener {
@@ -44,6 +46,12 @@ class ChatBotFragment : Fragment(), OnCommandItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val v = layoutInflater.inflate(R.layout.custom_toolbar, null)
+        chat_bot_toolbar.addView(v)
+        v.profile_title.text = "Чат-бот"
+        v.profile_back_btn.visibility = View.GONE
+        v.profile_settings_image.visibility = View.GONE
 
         pref = context!!.getSharedPreferences("sharedPreferences", AppCompatActivity.MODE_PRIVATE)
         botViewModel = ViewModelProvider(this).get(ChatBotViewModel::class.java)
@@ -85,8 +93,7 @@ class ChatBotFragment : Fragment(), OnCommandItemClickListener {
             if (!isFirstLaunch) {
                 messageList.clear()
                 chatBotAdapter.notifyDataSetChanged()
-            }
-            else
+            } else
                 isFirstLaunch = false
 
             sendMessage(
@@ -157,8 +164,9 @@ class ChatBotFragment : Fragment(), OnCommandItemClickListener {
         botViewModel.sendAnswerList(BotAnswerRequest(answers))
             .observe(viewLifecycleOwner, Observer {
                 isAnswered = true
-                sendMessage(it, true)
+                pref.edit().putString("covidLikelihood", it.probability.toString())
 
+                sendMessage(it, true)
                 when {
                     it.probability <= 3.5892857 -> {
                         sendMessage(
